@@ -21,3 +21,11 @@ func Equal(tb testing.TB, got, want interface{}) {
 		tb.Fatalf("\n got: %#v\nwant: %#v", got, want)
 	}
 }
+
+// Content fails the test if condition is false.
+func Content(tb testing.TB, condition bool, format string, args ...interface{}) {
+	tb.Helper()
+	if !condition {
+		tb.Fatalf(format, args...)
+	}
+}
